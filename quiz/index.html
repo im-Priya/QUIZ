@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Modern Quiz</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<div id="app" class="app">
+		<header class="app__header">
+			<div class="brand">
+				<div class="brand__logo" aria-hidden="true">Q</div>
+				<h1 class="brand__title">QuickQuiz</h1>
+			</div>
+			<div class="actions">
+				<button id="themeToggle" class="btn btn--ghost" aria-label="Toggle theme" title="Toggle theme">
+					<span class="icon">🌙</span>
+				</button>
+			</div>
+		</header>
+
+		<main class="app__main">
+			<section id="welcomeCard" class="card welcome">
+				<div class="welcome__content">
+					<h2 class="welcome__title">Welcome to QuickQuiz 🎉</h2>
+					<p class="welcome__subtitle">Sharpen your skills with quick, fun quizzes.</p>
+					<button id="startBtn" class="btn btn--primary">Get Started</button>
+				</div>
+			</section>
+
+			<section id="categoryCard" class="card category" hidden>
+				<div class="category__header">
+					<h2 class="category__title">Choose a category</h2>
+					<p class="category__subtitle">Pick what you want to practice today.</p>
+				</div>
+				<div class="category__grid">
+					<button class="cat btn" data-category="web">Web Basics</button>
+					<button class="cat btn" data-category="js">JavaScript</button>
+					<button class="cat btn" data-category="css">CSS</button>
+					<button class="cat btn" data-category="html">HTML</button>
+				</div>
+				<div class="category__actions">
+					<button id="backToWelcome" class="btn btn--ghost">Back</button>
+				</div>
+			</section>
+			<section class="card quiz" aria-live="polite">
+				<div class="quiz__progress">
+					<div class="progress">
+						<div id="progressBar" class="progress__bar" style="width:0%"></div>
+					</div>
+					<div id="progressText" class="quiz__progress-text">Question 1 of 10</div>
+				</div>
+
+				<div class="quiz__content">
+					<h2 id="questionText" class="quiz__question">Loading...</h2>
+
+					<ul id="optionsList" class="quiz__options" role="listbox" aria-label="Answer choices">
+						<!-- Options injected here -->
+					</ul>
+				</div>
+
+				<div class="quiz__footer">
+					<div class="hint" id="hintArea" hidden></div>
+					<div class="controls">
+						<button id="prevBtn" class="btn btn--ghost" disabled>Prev</button>
+						<button id="nextBtn" class="btn">Next</button>
+						<button id="submitBtn" class="btn btn--primary" hidden>Submit</button>
+						<button id="restartBtn" class="btn btn--ghost" hidden>Restart</button>
+					</div>
+				</div>
+			</section>
+
+			<section id="resultCard" class="card result" hidden>
+				<div class="result__header">
+					<h2 class="result__title">Your Results</h2>
+					<p id="resultSubtitle" class="result__subtitle"></p>
+				</div>
+				<div class="result__stats">
+					<div class="stat">
+						<div class="stat__value" id="scoreValue">0</div>
+						<div class="stat__label">Score</div>
+					</div>
+					<div class="stat">
+						<div class="stat__value" id="timeValue">00:00</div>
+						<div class="stat__label">Time</div>
+					</div>
+					<div class="stat">
+						<div class="stat__value" id="accuracyValue">0%</div>
+						<div class="stat__label">Accuracy</div>
+					</div>
+				</div>
+				<div id="reviewList" class="review"></div>
+				<div class="result__actions">
+					<button id="reviewToggle" class="btn btn--ghost">Toggle Review</button>
+					<button id="retryBtn" class="btn btn--primary">Try Again</button>
+				</div>
+			</section>
+		</main>
+
+		<div id="loadingMask" class="loading" hidden>
+			<div class="loading__backdrop"></div>
+			<div class="loading__card">
+				<div class="spinner" aria-hidden="true"></div>
+				<div class="loading__text">Preparing your quiz…</div>
+			</div>
+		</div>
+
+		<footer class="app__footer">
+			<div>Keyboard: 1-4 choose • N next • P prev • S submit • R restart</div>
+		</footer>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html> 
